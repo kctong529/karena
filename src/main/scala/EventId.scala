@@ -4,3 +4,7 @@ import java.util.UUID
  *   https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html **/
 
 case class EventId(value: UUID)
+
+object EventId:
+  def random(): EventId =
+    EventId(UUID.randomUUID())

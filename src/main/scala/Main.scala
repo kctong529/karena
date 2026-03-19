@@ -29,7 +29,7 @@ object Main extends JFXApp3:
 
     root.children += rectangle
 
-    val eventId_1: EventId = EventId(UUID.randomUUID())
+    val eventId_1: EventId = EventId.random()
     println(s"Event ID: $eventId_1")
 
   end start
