@@ -5,6 +5,7 @@ import scalafx.scene.shape.Rectangle
 import scalafx.scene.paint.Color.*
 
 import java.time.LocalDateTime
+import java.util.UUID
 
 object Main extends JFXApp3:
 
@@ -41,6 +42,11 @@ object Main extends JFXApp3:
     //   https://docs.scala-lang.org/scala3/book/string-interpolation.html
     val rawString_2: String = s"$eventTitle_2 $eventTime_2"
     println(s"Representative string: \"$rawString_2\"")
+    // Convert string into byte array required for UUID generation
+    //   https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#getBytes--
+    val rawBytes_2: Array[Byte] = rawString_2.getBytes()
+    val eventId_2: EventId = EventId(UUID.nameUUIDFromBytes(rawBytes_2))
+    println(s"Event ID: $eventId_2")
 
   end start
 
