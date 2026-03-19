@@ -1,4 +1,6 @@
 import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.must.Matchers.*
+
 import java.time.LocalDateTime
 import java.util.UUID
 
@@ -33,4 +35,26 @@ class EventIdTest extends AnyFlatSpec {
     assert(actual == expected)
   }
 
+  "EventId generation" must "not throw exceptions for titles with unusual Unicode characters" in {
+    val time = LocalDateTime.of(2026, 3, 19, 14, 30)
+
+    // Some unusual but valid Unicode titles to check that ID generation does not crash
+    val titles = Seq(
+      "Sprint \"review\" and 'retro'",
+      "Sprint “review” and ‘retro’",
+      "Team sync 🙂 🚀",
+      "Tapaaminen äöå",
+      "Проект встреча",
+      "こんにちは会議",
+      "会议安排",
+      "회의 일정"
+    )
+
+    // https://www.scalatest.org/user_guide/using_matchers#expectedExceptions
+    titles.foreach { title =>
+      noException should be thrownBy {
+        EventId.fromEventData(title, time)
+      }
+    }
+  }
 }
