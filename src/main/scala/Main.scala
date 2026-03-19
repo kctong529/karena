@@ -4,7 +4,7 @@ import scalafx.scene.layout.Pane
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.paint.Color.*
 
-import java.util.UUID
+import java.time.LocalDateTime
 
 object Main extends JFXApp3:
 
@@ -29,8 +29,18 @@ object Main extends JFXApp3:
 
     root.children += rectangle
 
+    /** Random UUID **/
     val eventId_1: EventId = EventId.random()
     println(s"Event ID: $eventId_1")
+
+    /** Deterministic UUID **/
+    // Define test data for generating the UUID
+    val eventTitle_2: String = "OS2 Sprint 2 Meeting"
+    val eventTime_2: LocalDateTime = LocalDateTime.of(2026, 3, 19, 14, 30)
+    // Scala string interpolation:
+    //   https://docs.scala-lang.org/scala3/book/string-interpolation.html
+    val rawString_2: String = s"$eventTitle_2 $eventTime_2"
+    println(s"Representative string: \"$rawString_2\"")
 
   end start
 
