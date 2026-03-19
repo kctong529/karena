@@ -2,7 +2,9 @@ import scalafx.application.JFXApp3
 import scalafx.scene.Scene
 import scalafx.scene.layout.Pane
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.paint.Color._
+import scalafx.scene.paint.Color.*
+
+import java.util.UUID
 
 object Main extends JFXApp3:
 
@@ -26,6 +28,9 @@ object Main extends JFXApp3:
       fill = Blue
 
     root.children += rectangle
+
+    val eventId_1: EventId = EventId(UUID.randomUUID())
+    println(s"Event ID: $eventId_1")
 
   end start
 
