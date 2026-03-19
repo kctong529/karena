@@ -35,7 +35,6 @@ object Main extends JFXApp3:
     println(s"Event ID: $eventId_1")
 
     /** Deterministic UUID **/
-    // Define test data for generating the UUID
     val eventTitle_2: String = "OS2 Sprint 2 Meeting"
     val eventTime_2: LocalDateTime = LocalDateTime.of(2026, 3, 19, 14, 30)
     val eventId_2: EventId = EventId.fromEventData(eventTitle_2, eventTime_2)
