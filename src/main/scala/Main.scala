@@ -37,7 +37,7 @@ object Main extends JFXApp3:
     /** Deterministic UUID **/
     val eventTitle_2: String = "OS2 Sprint 2 Meeting"
     val eventTime_2: LocalDateTime = LocalDateTime.of(2026, 3, 19, 14, 30)
-    val eventId_2: EventId = EventId.fromEventData(eventTitle_2, eventTime_2)
+    val eventId_2: EventId = EventId.deterministic(eventTitle_2, eventTime_2)
     println(s"Event ID: $eventId_2")
 
   end start

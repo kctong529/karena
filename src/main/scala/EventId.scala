@@ -13,10 +13,10 @@ object EventId:
   def random(): EventId =
     EventId(UUID.randomUUID())
 
-  def fromEventData(title: String, time: LocalDateTime): EventId =
+  def deterministic(title: String, createdAt: LocalDateTime): EventId =
     /** Encode with UTF-8 explicitly to make UUID generation deterministic across environments.
      *  Using getBytes() without a charset would rely on the platform default encoding. **/
-    val rawString: String = s"$title $time"
+    val rawString: String = s"$title $createdAt"
     // println(s"Representative string: \"$rawString\"")
     val rawBytes: Array[Byte] = rawString.getBytes(StandardCharsets.UTF_8)
     EventId(UUID.nameUUIDFromBytes(rawBytes))
