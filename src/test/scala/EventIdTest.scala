@@ -1,5 +1,6 @@
 import org.scalatest.flatspec.AnyFlatSpec
 import java.time.LocalDateTime
+import java.util.UUID
 
 class EventIdTest extends AnyFlatSpec {
 
@@ -21,4 +22,15 @@ class EventIdTest extends AnyFlatSpec {
 
     assert(id1 != id2)
   }
+
+  "Known event data" should "produce the expected UUID" in {
+    val title = "OS2 Sprint 2 Meeting"
+    val time = LocalDateTime.of(2026, 3, 19, 14, 30)
+
+    val expected = EventId(UUID.fromString("75ff0a2f-17e2-383b-9531-9d64f4add6b2"))
+    val actual = EventId.fromEventData(title, time)
+
+    assert(actual == expected)
+  }
+
 }
